@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            
+        }
+        h1
+        {
+            background: pink;
+            color: white;
+            padding: 15px;
+    
+        }
+        .preview
+        {
+            width: 80%;
+            margin: 20px auto;
+            padding: 30px;
+            background-color:lightyellow;
+            color: black;
+            border: 1px solid black;
+            transition: all 0.3s ease;
+            
+        }
+         .controls
+        {
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .controls div
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 350px;
+            
+        }
+        .controls label
+        {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS GENERATOR</h1>
+    <div class="preview" id="previewbox">LOREM IPSUM</div>
+    <div class="controls">
+        <div>
+            <label>Enter your text</label>
+        <input type="text"  id="Enter text" placeholder="Enter text" style="height: 25px;">
+            <label>Enter border width</label>
+        <input type="text" id="borderWidth" placeholder="Border width" style="height: 25px;">
+         <label>Enter font size</label>
+        <input type="text" id="fontSize" placeholder="Enter font size" style="height: 25px;">
+        <label>Enter Box shadow</label>
+         <label>X</label>
+        <input type="range" id="shadowX" min="-50" max="50" value="0">
+                 <label>Y</label>
+        <input type="range" id="shadowY" min="-50" max="50" value="0">
+                 <label>Blur</label>
+        <input type="range" id="shadowBlur" min="0" max="100" value="0">
+                         <label>Sprade</label>
+        <input type="range" id="shadowSprade" min="0" max="100" value="0">
+    </div>
+
+    <div>
+        <label>Choose Text color</label>
+        <select id="textcolor" style="height: 30px;">
+        <option value="black">Black</option>
+        <option value="gray">Gray</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        </select>
+
+        <label>Choose Border color</label>
+        <select id="Choose Border color" style="height: 30px;">
+        <option value="white">White</option>
+        <option value="pink">Pink</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        </select>
+
+        <label>Enter Margin</label>
+                <input type="range" id="margin" min="0" max="100" value="0">
+
+    </div>
+
+    <div>
+      <label>Choose Background color</label>
+        <select id="choose Background color" style="height: 30px;">
+        <option value="white">Lightgreen</option>
+        <option value="pink">Pink</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        </select>
+        <label>Enter border Radius</label>
+            <input type="text" id="borderradius" placeholder="Enter border radius" style="height: 25px;">
+
+        <label>Enter padding</label>
+            <input type="range" id="padding" min="0" max="100" value="0">
+
+    </div>
+    </div>
+</body>
+</html>
+<script>
+    const box = document.getElementById("previewbox")
+
+             document.getElementById("Enter text").addEventListener("input", function(){
+             previewbox.innerHTML = this.value || "LOREM IPSUM";
+
+        });
+
+             document.getElementById("borderWidth").addEventListener("input", function (){
+             previewbox.style.borderWidth = this.value + "px";
+             previewbox.style.borderstyle = "solid";
+        });
+
+            document.getElementById("fontSize").addEventListener("input", function () {
+             previewbox.style.fontSize = this.value + "px";
+        });
+
+            document.getElementById("margin").addEventListener("input", function () {
+            previewbox.style.margin = this.value + "px";
+        });
+
+            document.getElementById("padding").addEventListener("input", function () {
+            previewbox.style.padding = this.value + "px";
+        });
+
+            document.getElementById("borderradius").addEventListener("input", function () {
+            previewbox.style.borderRadius = this.value + "px";
+        });
+    // Box shadow
+        let shadowX = 0, shadowY = 0, blur = 0, spread = 0;
+
+       function updateShadow() {
+          box.style.boxShadow =` ${shadowX}px ${shadowY}px ${blur}px ${spread}px gray`;
+       }
+
+        document.getElementById("shadowX").addEventListener("input", function () {
+         shadowX = this.value;
+         updateShadow();
+       });
+
+       document.getElementById("shadowY").addEventListener("input", function () {
+        shadowY = this.value;
+        updateShadow();
+       });
+
+        document.getElementById("shadowBlur").addEventListener("input", function () {
+         blur = this.value;
+       updateShadow();
+        });
+
+         document.getElementById("shadowSpread").addEventListener("input", function () {
+         spread = this.value;
+         updateShadow();
+         });
+
+</script>
